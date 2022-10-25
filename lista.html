@@ -1,44 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista</title>
-</head>
+
 <body>
     <p id="Cabecalho">
         Meu Programa em JavaScrip - Lista
     </p>
 
     <p id="Lista" style="background-color: #CCCC ; ">
-         Lista
+        Lista
     </p>
 
-    <P id="acoes">
-    
-    <input type="button" value="Adicionar Item" >
-    <input type="button" value="Remover Item">
-    </P>
+    <p id="acoes">
+
+        <input type="button" value="Adicionar Item" onclick="inserirItem(minhaLista);">
+
+        <input type="button" value="Remover Item" onclick="removerItem(minhaLista);">
+
+        <input type="button" value="Atualizar Lista" onclick="exibirLista(minhaLista);">
+
+    </p>
 </body>
 
 <script>
-
-    var minhaLista = ["abacaxi","banana","limão"] ;
-
     function exibirLista(arr) {
 
-        for(i=0; i<=arr.length; i++)
-        {
-        textoRetorno +=i +"-" + arr[i]
+        var textoRetorno = "";
+
+        for (i = 0; i <= arr.length - 1; i++) {
+
+            textoRetorno += i + " - " + arr[i] + ""
+
         }
- 
 
-    Document.getElementById("lista").innerHTML -textoRetorno;
+        document.getElementById("lista").innerHTML = textoRetorno;
 
-}
+    }
 
-exibirLista(minhaLista);
-    </script>
+    function inserirItem(arr) {
+
+        var novoItem = prompt("Digite um novo item:");
+
+        if (novoItem != null && novoItem != "") {
+
+            arr.push(novoItem);
+
+        } else {
+
+            alert("Nenhum item foi digitado!");
+
+        }
+
+        exibirLista(arr);
+
+    }
+
+    function removerItem(arr) {
+
+
+        var item = prompt("Digite o número do item a ser removido:");
+
+        if (item != null && item != "") {
+
+            arr.splice(item, 1);
+
+        } else {
+
+            alert("Nenhum item foi digitado!");
+
+        }
+
+
+        exibirLista(arr);
+
+    }
+
+
+    exibirLista(minhaLista);
+
+
+</script>
 
 </html>
